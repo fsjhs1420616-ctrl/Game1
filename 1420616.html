@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>故事骰子大冒險 | 一頁式專案與遊戲平台展示 Story Dice Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Fredoka', 'Noto Sans TC', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-pattern {
+            background-color: #fffbeb;
+            background-image: radial-gradient(#f59e0b 0.75px, transparent 0.75px), radial-gradient(#f59e0b 0.75px, #fffbeb 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0,15px 15px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans selection:bg-amber-500 selection:text-white">
+
+    <!-- Sticky Navigation -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-amber-100 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <div class="w-10 h-10 bg-gradient-to-tr from-amber-500 to-rose-500 rounded-xl flex items-center justify-center text-white text-xl shadow-md">
+                    <i class="fa-solid fa-dice-d6"></i>
+                </div>
+                <span class="font-black text-xl tracking-tight bg-gradient-to-r from-amber-600 via-orange-500 to-rose-500 bg-clip-text text-transparent">
+                    故事骰子大冒險
+                </span>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-6 text-sm font-bold text-slate-600">
+                <a href="#features" class="hover:text-amber-600 transition flex items-center gap-1.5"><i class="fa-solid fa-wand-magic-sparkles text-amber-500"></i>特色</a>
+                <a href="#evolution" class="hover:text-amber-600 transition flex items-center gap-1.5"><i class="fa-solid fa-route text-amber-500"></i>開發歷程</a>
+                <a href="#categories" class="hover:text-amber-600 transition flex items-center gap-1.5"><i class="fa-solid fa-icons text-amber-500"></i>骰子圖示庫</a>
+            </nav>
+
+            <button onclick="openGameModal()" class="px-5 py-2.5 bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-white font-black rounded-xl shadow-lg shadow-orange-500/20 transform hover:scale-105 transition flex items-center gap-2 text-sm">
+                <i class="fa-solid fa-gamepad text-lg"></i>
+                <span>線上遊玩</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Showcase Header Section -->
+    <section class="hero-pattern py-16 px-4 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto text-center flex flex-col items-center gap-6">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-amber-100 text-amber-800 rounded-full text-xs font-black border border-amber-300">
+                <i class="fa-solid fa-sparkles text-amber-600"></i> 視覺系看圖說故事 ✕ 3D 物理骰子
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+                翻轉骰子，展開你的<br>
+                <span class="bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 bg-clip-text text-transparent">無限奇幻故事大冒險！</span>
+            </h1>
+
+            <!-- Key Visual Badges Grid (Icon-heavy) -->
+            <div class="flex flex-wrap justify-center gap-4 my-2">
+                <div class="px-4 py-2 bg-white rounded-2xl shadow-md border border-amber-100 flex items-center gap-2 font-bold text-slate-700 text-sm">
+                    <i class="fa-solid fa-cubes text-amber-500 text-lg"></i>
+                    <span>精準 3D 物理轉動</span>
+                </div>
+                <div class="px-4 py-2 bg-white rounded-2xl shadow-md border border-amber-100 flex items-center gap-2 font-bold text-slate-700 text-sm">
+                    <i class="fa-solid fa-film text-purple-500 text-lg"></i>
+                    <span>連環故事漫畫格</span>
+                </div>
+                <div class="px-4 py-2 bg-white rounded-2xl shadow-md border border-amber-100 flex items-center gap-2 font-bold text-slate-700 text-sm">
+                    <i class="fa-solid fa-layer-group text-blue-500 text-lg"></i>
+                    <span>自由擴充多顆骰子</span>
+                </div>
+                <div class="px-4 py-2 bg-white rounded-2xl shadow-md border border-amber-100 flex items-center gap-2 font-bold text-slate-700 text-sm">
+                    <i class="fa-solid fa-volume-high text-emerald-500 text-lg"></i>
+                    <span>擬真翻滾音效</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center gap-4 mt-4">
+                <button onclick="openGameModal()" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white font-black text-lg rounded-2xl shadow-xl shadow-orange-500/30 hover:scale-105 transition flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-play text-xl"></i>
+                    <span>啟動遊戲平台</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: Features (Icon First) -->
+    <section id="features" class="py-16 max-w-6xl mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-2xl sm:text-3xl font-black text-slate-900 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-bolt text-amber-500"></i> 遊戲核心亮點
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Feature 1 -->
+            <div class="p-6 bg-white rounded-3xl shadow-lg border border-slate-100 flex flex-col items-center text-center gap-4 hover:-translate-y-1 transition">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl">
+                    <i class="fa-solid fa-dice-d6"></i>
+                </div>
+                <h3 class="font-black text-lg text-slate-800">1. 零誤差 3D 著陸</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">骰子旋轉停下後，頂面圖示與結果卡片 100% 精準一致。</p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="p-6 bg-white rounded-3xl shadow-lg border border-slate-100 flex flex-col items-center text-center gap-4 hover:-translate-y-1 transition">
+                <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-3xl">
+                    <i class="fa-solid fa-photo-film"></i>
+                </div>
+                <h3 class="font-black text-lg text-slate-800">2. 視覺故事畫布</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">點擊結果自動放入故事格，搭配反應貼紙，完全免打字。</p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="p-6 bg-white rounded-3xl shadow-lg border border-slate-100 flex flex-col items-center text-center gap-4 hover:-translate-y-1 transition">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl">
+                    <i class="fa-solid fa-sliders"></i>
+                </div>
+                <h3 class="font-black text-lg text-slate-800">3. 自由擴充/鎖定</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">可隨時切換 2~8 顆主題骰子，並支援單獨鎖定骰子。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Development Evolution Timeline -->
+    <section id="evolution" class="py-16 bg-slate-100/70 border-y border-slate-200/60 px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-timeline text-amber-500"></i> 開發進展歷程
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Evolution 1 -->
+                <div class="bg-white p-6 rounded-3xl shadow-md border border-slate-200 relative flex flex-col gap-3">
+                    <span class="w-8 h-8 rounded-full bg-amber-500 text-white font-black text-xs flex items-center justify-center shadow-md">v1</span>
+                    <div class="text-3xl text-amber-500"><i class="fa-solid fa-lightbulb"></i></div>
+                    <h4 class="font-black text-slate-800 text-base">雙骰構想階段</h4>
+                    <ul class="text-xs text-slate-500 space-y-1.5 font-medium">
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500"></i> 地點 ＋ 事件雙骰機制</li>
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500"></i> 基礎 Web Audio 滾動音效</li>
+                    </ul>
+                </div>
+
+                <!-- Evolution 2 -->
+                <div class="bg-white p-6 rounded-3xl shadow-md border border-slate-200 relative flex flex-col gap-3">
+                    <span class="w-8 h-8 rounded-full bg-orange-500 text-white font-black text-xs flex items-center justify-center shadow-md">v2</span>
+                    <div class="text-3xl text-orange-500"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h4 class="font-black text-slate-800 text-base">視覺與多骰升級</h4>
+                    <ul class="text-xs text-slate-500 space-y-1.5 font-medium">
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500"></i> 擴充至 6 大類別骰子</li>
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500"></i> 加入 4 格連環故事畫布</li>
+                    </ul>
+                </div>
+
+                <!-- Evolution 3 -->
+                <div class="bg-white p-6 rounded-3xl shadow-md border border-slate-200 relative flex flex-col gap-3">
+                    <span class="w-8 h-8 rounded-full bg-rose-500 text-white font-black text-xs flex items-center justify-center shadow-md">v3</span>
+                    <div class="text-3xl text-rose-500"><i class="fa-solid fa-bullseye"></i></div>
+                    <h4 class="font-black text-slate-800 text-base">3D 著陸角修正版</h4>
+                    <ul class="text-xs text-slate-500 space-y-1.5 font-medium">
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500"></i> 修正 Bug1：3D 頂面完全匹配</li>
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-500"></i> 自由新增/刪除動態骰盤</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Dice Icon Categories Matrix -->
+    <section id="categories" class="py-16 max-w-6xl mx-auto px-4">
+        <div class="text-center mb-10">
+            <h2 class="text-2xl sm:text-3xl font-black text-slate-900 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-shapes text-amber-500"></i> 豐富的圖示主題庫
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+            <!-- Cat 1 -->
+            <div class="p-4 bg-blue-50 border border-blue-200 rounded-2xl text-center flex flex-col items-center gap-2">
+                <i class="fa-solid fa-hospital text-3xl text-blue-600"></i>
+                <span class="font-black text-xs text-blue-800">地點 Location</span>
+            </div>
+            <!-- Cat 2 -->
+            <div class="p-4 bg-purple-50 border border-purple-200 rounded-2xl text-center flex flex-col items-center gap-2">
+                <i class="fa-solid fa-bolt-lightning text-3xl text-purple-600"></i>
+                <span class="font-black text-xs text-purple-800">事件 Event</span>
+            </div>
+            <!-- Cat 3 -->
+            <div class="p-4 bg-rose-50 border border-rose-200 rounded-2xl text-center flex flex-col items-center gap-2">
+                <i class="fa-solid fa-user-ninja text-3xl text-rose-600"></i>
+                <span class="font-black text-xs text-rose-800">角色 Character</span>
+            </div>
+            <!-- Cat 4 -->
+            <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl text-center flex flex-col items-center gap-2">
+                <i class="fa-solid fa-wand-magic-sparkles text-3xl text-emerald-600"></i>
+                <span class="font-black text-xs text-emerald-800">道具 Item</span>
+            </div>
+            <!-- Cat 5 -->
+            <div class="p-4 bg-amber-50 border border-amber-200 rounded-2xl text-center flex flex-col items-center gap-2">
+                <i class="fa-solid fa-cloud-showers-heavy text-3xl text-amber-600"></i>
+                <span class="font-black text-xs text-amber-800">氛圍 Atmosphere</span>
+            </div>
+            <!-- Cat 6 -->
+            <div class="p-4 bg-fuchsia-50 border border-fuchsia-200 rounded-2xl text-center flex flex-col items-center gap-2">
+                <i class="fa-solid fa-handshake text-3xl text-fuchsia-600"></i>
+                <span class="font-black text-xs text-fuchsia-800">轉折 Twist</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Game Launcher Banner -->
+    <section class="py-16 bg-gradient-to-tr from-slate-900 via-slate-800 to-indigo-950 text-white text-center px-4">
+        <div class="max-w-3xl mx-auto flex flex-col items-center gap-6">
+            <div class="w-16 h-16 bg-amber-500 rounded-2xl flex items-center justify-center text-3xl shadow-xl">
+                <i class="fa-solid fa-gamepad"></i>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-black">準備好開始說故事了嗎？</h2>
+            
+            <button onclick="openGameModal()" class="px-10 py-4 bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-white font-black text-lg rounded-2xl shadow-xl shadow-orange-500/30 transform hover:scale-105 transition flex items-center gap-3">
+                <i class="fa-solid fa-rocket text-xl"></i>
+                <span>開啟遊戲平台 Play Game</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- FULLSCREEN GAME MODAL -->
+    <div id="game-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex flex-col">
+        <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+            <div class="flex items-center gap-2 text-white">
+                <i class="fa-solid fa-dice-d6 text-amber-500"></i>
+                <span class="font-black text-sm">3D 故事骰子大冒險 (Story Dice Platform)</span>
+            </div>
+            <button onclick="closeGameModal()" class="px-3 py-1 bg-rose-500/20 text-rose-300 border border-rose-500/40 hover:bg-rose-500/40 rounded-xl text-xs font-bold transition flex items-center gap-1">
+                <i class="fa-solid fa-xmark"></i> 關閉全螢幕
+            </button>
+        </div>
+        <iframe id="game-iframe" class="w-full flex-1 border-0"></iframe>
+    </div>
+
+    <footer class="py-6 border-t border-slate-200 text-center text-xs text-slate-400">
+        Story Dice Showcase &copy; 2026 - 一頁式故事專案介紹網站
+    </footer>
+
+    <script>
+        const GAME_HTML_CODE = `<!DOCTYPE html>
+<html lang="zh-Hant" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D 故事骰子大冒險 Story Dice Adventure</title>
+    <script src="https://cdn.tailwindcss.com"><\/script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        .scene { perspective: 1000px; }
+        .cube { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 1.5s cubic-bezier(0.2, 0.8, 0.25, 1); }
+        .cube-face { position: absolute; width: 100%; height: 100%; border-radius: 1.25rem; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: bold; box-shadow: inset 0 0 15px rgba(255,255,255,0.6), inset 0 -4px 8px rgba(0,0,0,0.12), 0 8px 20px rgba(0,0,0,0.15); backface-visibility: hidden; user-select: none; border: 3px solid rgba(255, 255, 255, 0.8); }
+        .cube-face--0 { transform: rotateY(0deg) translateZ(60px); }
+        .cube-face--1 { transform: rotateY(90deg) translateZ(60px); }
+        .cube-face--2 { transform: rotateY(180deg) translateZ(60px); }
+        .cube-face--3 { transform: rotateY(-90deg) translateZ(60px); }
+        .cube-face--4 { transform: rotateX(90deg) translateZ(60px); }
+        .cube-face--5 { transform: rotateX(-90deg) translateZ(60px); }
+        @media (min-width: 640px) {
+            .cube-face--0 { transform: rotateY(0deg) translateZ(65px); }
+            .cube-face--1 { transform: rotateY(90deg) translateZ(65px); }
+            .cube-face--2 { transform: rotateY(180deg) translateZ(65px); }
+            .cube-face--3 { transform: rotateY(-90deg) translateZ(65px); }
+            .cube-face--4 { transform: rotateX(90deg) translateZ(65px); }
+            .cube-face--5 { transform: rotateX(-90deg) translateZ(65px); }
+        }
+        @keyframes gentleFloat { 0%, 100% { transform: translateY(0px) rotateX(10deg) rotateY(10deg); } 50% { transform: translateY(-8px) rotateX(16deg) rotateY(2deg); } }
+        .idle-float { animation: gentleFloat 4s ease-in-out infinite; }
+    </style>
+</head>
+<body class="bg-amber-50/70 text-slate-800 min-h-full font-sans flex flex-col p-4">
+    <div class="max-w-6xl mx-auto w-full flex flex-col gap-6">
+        <div class="bg-white rounded-3xl p-4 shadow-lg border border-slate-100 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-sm font-black text-slate-700">故事骰子盤 (<span id="dice-count-num">6</span> 顆)</span>
+            </div>
+            <button onclick="rollAllDice()" id="roll-all-btn" class="px-6 py-2.5 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white font-black rounded-2xl shadow-lg hover:scale-105 transition flex items-center gap-2">
+                <i class="fa-solid fa-dice text-xl"></i><span>搖動全盤骰子 Roll!</span>
+            </button>
+        </div>
+
+        <div class="bg-gradient-to-b from-amber-100/80 to-rose-50/50 rounded-3xl p-6 shadow-inner border border-amber-200/60 min-h-[300px] flex items-center justify-center">
+            <div id="dice-tray" class="grid grid-cols-2 sm:grid-cols-3 gap-6 w-full justify-items-center"></div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-5 shadow-lg border border-slate-100 flex flex-col gap-3">
+            <h2 class="font-black text-slate-800 flex items-center gap-2 text-base">
+                <i class="fa-solid fa-square-poll-vertical text-amber-500"></i>
+                <span>🎯 本次擲骰結果 (點擊加入故事格)</span>
+            </h2>
+            <div id="results-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-5 shadow-lg border border-slate-100 flex flex-col gap-3">
+            <h3 class="font-black text-slate-800 flex items-center gap-2 text-base">
+                <i class="fa-solid fa-film text-indigo-500"></i>
+                <span>連環故事格 Comic Panels</span>
+            </h3>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div id="panel-0" onclick="selectPanel(0)" class="min-h-[120px] rounded-2xl border-2 border-dashed border-amber-400 bg-amber-50/50 p-3 flex flex-col items-center justify-center text-center cursor-pointer relative"><span class="absolute top-2 left-2 w-5 h-5 rounded-full bg-amber-500 text-white font-black text-xs flex items-center justify-center">1</span><span class="text-xs font-bold text-slate-400">起因</span></div>
+                <div id="panel-1" onclick="selectPanel(1)" class="min-h-[120px] rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 p-3 flex flex-col items-center justify-center text-center cursor-pointer relative"><span class="absolute top-2 left-2 w-5 h-5 rounded-full bg-slate-300 text-slate-700 font-black text-xs flex items-center justify-center">2</span><span class="text-xs font-bold text-slate-400">經過</span></div>
+                <div id="panel-2" onclick="selectPanel(2)" class="min-h-[120px] rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 p-3 flex flex-col items-center justify-center text-center cursor-pointer relative"><span class="absolute top-2 left-2 w-5 h-5 rounded-full bg-slate-300 text-slate-700 font-black text-xs flex items-center justify-center">3</span><span class="text-xs font-bold text-slate-400">轉折</span></div>
+                <div id="panel-3" onclick="selectPanel(3)" class="min-h-[120px] rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 p-3 flex flex-col items-center justify-center text-center cursor-pointer relative"><span class="absolute top-2 left-2 w-5 h-5 rounded-full bg-slate-300 text-slate-700 font-black text-xs flex items-center justify-center">4</span><span class="text-xs font-bold text-slate-400">結局</span></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const PRESET_DICE_POOL = {
+            location: { name: '地點', badgeBg: 'bg-blue-100 text-blue-600', faces: [ { name: '醫院', icon: 'fa-hospital', color: 'from-blue-500 to-cyan-500', bgCard: 'bg-blue-50 border-blue-200', textTheme: 'text-blue-600' }, { name: '學校', icon: 'fa-school', color: 'from-amber-500 to-yellow-500', bgCard: 'bg-amber-50 border-amber-200', textTheme: 'text-amber-600' }, { name: '公園', icon: 'fa-tree', color: 'from-emerald-500 to-green-500', bgCard: 'bg-emerald-50 border-emerald-200', textTheme: 'text-emerald-600' }, { name: '城堡', icon: 'fa-chess-castle', color: 'from-purple-500 to-indigo-500', bgCard: 'bg-purple-50 border-purple-200', textTheme: 'text-purple-600' }, { name: '太空站', icon: 'fa-shuttle-space', color: 'from-indigo-600 to-slate-800', bgCard: 'bg-indigo-50 border-indigo-200', textTheme: 'text-indigo-600' }, { name: '海灘', icon: 'fa-umbrella-beach', color: 'from-cyan-500 to-blue-500', bgCard: 'bg-cyan-50 border-cyan-200', textTheme: 'text-cyan-600' } ] },
+            event: { name: '事件', badgeBg: 'bg-purple-100 text-purple-600', faces: [ { name: '發現寶藏', icon: 'fa-gem', color: 'from-amber-400 to-yellow-500', bgCard: 'bg-yellow-50 border-yellow-200', textTheme: 'text-yellow-600' }, { name: '突然停電', icon: 'fa-bolt-lightning', color: 'from-zinc-700 to-slate-900', bgCard: 'bg-zinc-100 border-zinc-300', textTheme: 'text-zinc-700' }, { name: '遇到外星人', icon: 'fa-dragon', color: 'from-rose-500 to-red-600', bgCard: 'bg-rose-50 border-rose-200', textTheme: 'text-rose-600' }, { name: '時空穿越', icon: 'fa-hourglass-half', color: 'from-teal-500 to-emerald-600', bgCard: 'bg-teal-50 border-teal-200', textTheme: 'text-teal-600' }, { name: '遺失鑰匙', icon: 'fa-key', color: 'from-orange-500 to-amber-600', bgCard: 'bg-orange-50 border-orange-200', textTheme: 'text-orange-600' }, { name: '獲得魔法', icon: 'fa-wand-magic-sparkles', color: 'from-fuchsia-500 to-purple-600', bgCard: 'bg-fuchsia-50 border-fuchsia-200', textTheme: 'text-fuchsia-600' } ] },
+            character: { name: '角色', badgeBg: 'bg-rose-100 text-rose-600', faces: [ { name: '勇敢偵探', icon: 'fa-user-ninja', color: 'from-rose-500 to-pink-500', bgCard: 'bg-rose-50 border-rose-200', textTheme: 'text-rose-600' }, { name: '神祕海盜', icon: 'fa-skull-crossbones', color: 'from-amber-600 to-stone-700', bgCard: 'bg-amber-50 border-amber-200', textTheme: 'text-amber-700' }, { name: '天才科學家', icon: 'fa-flask', color: 'from-cyan-500 to-blue-600', bgCard: 'bg-cyan-50 border-cyan-200', textTheme: 'text-cyan-600' }, { name: '淘氣小狗', icon: 'fa-dog', color: 'from-orange-400 to-amber-500', bgCard: 'bg-orange-50 border-orange-200', textTheme: 'text-orange-600' }, { name: '外星皇族', icon: 'fa-crown', color: 'from-yellow-400 to-amber-600', bgCard: 'bg-yellow-50 border-yellow-200', textTheme: 'text-yellow-600' }, { name: '機械助手', icon: 'fa-robot', color: 'from-slate-500 to-zinc-700', bgCard: 'bg-slate-100 border-slate-300', textTheme: 'text-slate-700' } ] },
+            item: { name: '道具', badgeBg: 'bg-emerald-100 text-emerald-600', faces: [ { name: '神奇地圖', icon: 'fa-map', color: 'from-emerald-500 to-teal-600', bgCard: 'bg-emerald-50 border-emerald-200', textTheme: 'text-emerald-600' }, { name: '隱形斗篷', icon: 'fa-mask', color: 'from-violet-500 to-purple-700', bgCard: 'bg-violet-50 border-violet-200', textTheme: 'text-violet-600' }, { name: '時光鬧鐘', icon: 'fa-clock', color: 'from-blue-500 to-indigo-600', bgCard: 'bg-blue-50 border-blue-200', textTheme: 'text-blue-600' }, { name: '古老水晶球', icon: 'fa-circle-nodes', color: 'from-fuchsia-500 to-pink-600', bgCard: 'bg-fuchsia-50 border-fuchsia-200', textTheme: 'text-fuchsia-600' }, { name: '傳送門槍', icon: 'fa-gun', color: 'from-rose-500 to-orange-500', bgCard: 'bg-rose-50 border-rose-200', textTheme: 'text-rose-600' }, { name: '萬能鑰匙', icon: 'fa-key', color: 'from-amber-400 to-yellow-600', bgCard: 'bg-yellow-50 border-yellow-200', textTheme: 'text-yellow-600' } ] },
+            atmosphere: { name: '氛圍', badgeBg: 'bg-amber-100 text-amber-600', faces: [ { name: '暴風雨夜', icon: 'fa-cloud-showers-heavy', color: 'from-slate-600 to-cyan-800', bgCard: 'bg-slate-100 border-slate-300', textTheme: 'text-slate-700' }, { name: '歡樂慶典', icon: 'fa-champagne-glasses', color: 'from-pink-500 to-rose-500', bgCard: 'bg-pink-50 border-pink-200', textTheme: 'text-pink-600' }, { name: '陰森霧氣', icon: 'fa-smog', color: 'from-gray-500 to-zinc-700', bgCard: 'bg-zinc-100 border-zinc-300', textTheme: 'text-zinc-700' }, { name: '陽光燦爛', icon: 'fa-sun', color: 'from-amber-400 to-orange-500', bgCard: 'bg-amber-50 border-amber-200', textTheme: 'text-amber-600' }, { name: '神祕靜謐', icon: 'fa-moon', color: 'from-indigo-600 to-purple-800', bgCard: 'bg-indigo-50 border-indigo-200', textTheme: 'text-indigo-600' }, { name: '大雪紛飛', icon: 'fa-snowflake', color: 'from-cyan-400 to-blue-500', bgCard: 'bg-cyan-50 border-cyan-200', textTheme: 'text-cyan-600' } ] },
+            twist: { name: '轉折', badgeBg: 'bg-fuchsia-100 text-fuchsia-600', faces: [ { name: '原來是作夢', icon: 'fa-bed', color: 'from-fuchsia-500 to-pink-500', bgCard: 'bg-fuchsia-50 border-fuchsia-200', textTheme: 'text-fuchsia-600' }, { name: '敵人變盟友', icon: 'fa-handshake', color: 'from-emerald-500 to-teal-600', bgCard: 'bg-emerald-50 border-emerald-200', textTheme: 'text-emerald-600' }, { name: '地圖畫錯了', icon: 'fa-map-location-dot', color: 'from-rose-500 to-red-600', bgCard: 'bg-rose-50 border-rose-200', textTheme: 'text-rose-600' }, { name: '隱藏反派', icon: 'fa-user-ninja', color: 'from-slate-700 to-zinc-900', bgCard: 'bg-slate-100 border-slate-300', textTheme: 'text-slate-700' }, { name: '救星降臨', icon: 'fa-shield-halved', color: 'from-blue-500 to-indigo-600', bgCard: 'bg-blue-50 border-blue-200', textTheme: 'text-blue-600' }, { name: '時空裂縫', icon: 'fa-volcano', color: 'from-orange-500 to-red-600', bgCard: 'bg-orange-50 border-orange-200', textTheme: 'text-orange-600' } ] }
+        };
+
+        const TARGET_FACE_ROTATIONS = [{x:0,y:0},{x:0,y:-90},{x:0,y:-180},{x:0,y:90},{x:-90,y:0},{x:90,y:0}];
+        let activeDiceList = ['location', 'event', 'character', 'item', 'atmosphere', 'twist'];
+        let diceStates = {};
+        let isRolling = false;
+        let selectedPanelIndex = 0;
+
+        function initDiceTray() {
+            const tray = document.getElementById('dice-tray');
+            tray.innerHTML = '';
+            activeDiceList.forEach((diceId) => {
+                const config = PRESET_DICE_POOL[diceId];
+                if (!config) return;
+                if (!diceStates[diceId]) diceStates[diceId] = { activeFaceIndex: 0, isLocked: false };
+
+                const diceContainer = document.createElement('div');
+                diceContainer.className = 'flex flex-col items-center gap-2 relative';
+                diceContainer.innerHTML = \`
+                    <span class="text-[11px] font-bold px-2 py-0.5 rounded-full \${config.badgeBg}">\${config.name}</span>
+                    <div class="scene w-28 h-28 cursor-pointer" onclick="rollSingleDice('\${diceId}')">
+                        <div id="cube-\${diceId}" class="cube idle-float"></div>
+                    </div>
+                \`;
+                tray.appendChild(diceContainer);
+
+                const cube = document.getElementById(\`cube-\${diceId}\`);
+                config.faces.forEach((item, faceIdx) => {
+                    const faceElem = document.createElement('div');
+                    faceElem.className = \`cube-face cube-face--\${faceIdx} bg-white\`;
+                    faceElem.innerHTML = \`
+                        <div class="p-2 flex flex-col items-center justify-center text-center gap-1">
+                            <i class="fa-solid \${item.icon} text-2xl \${item.textTheme}"></i>
+                            <span class="text-xs font-black text-slate-800">\${item.name}</span>
+                        </div>
+                    \`;
+                    cube.appendChild(faceElem);
+                });
+            });
+            updateResultCardsUI();
+        }
+
+        function rollSingleDice(diceId) {
+            if (isRolling) return;
+            isRolling = true;
+            const cube = document.getElementById(\`cube-\${diceId}\`);
+            cube.classList.remove('idle-float');
+            const targetFaceIdx = Math.floor(Math.random() * 6);
+            diceStates[diceId].activeFaceIndex = targetFaceIdx;
+            const targetRot = TARGET_FACE_ROTATIONS[targetFaceIdx];
+            cube.style.transform = \`rotateX(\${1080 + targetRot.x}deg) rotateY(\${1080 + targetRot.y}deg)\`;
+            setTimeout(() => {
+                isRolling = false;
+                cube.classList.add('idle-float');
+                updateResultCardsUI();
+            }, 1500);
+        }
+
+        function rollAllDice() {
+            if (isRolling) return;
+            isRolling = true;
+            activeDiceList.forEach((diceId) => {
+                const cube = document.getElementById(\`cube-\${diceId}\`);
+                cube.classList.remove('idle-float');
+                const targetFaceIdx = Math.floor(Math.random() * 6);
+                diceStates[diceId].activeFaceIndex = targetFaceIdx;
+                const targetRot = TARGET_FACE_ROTATIONS[targetFaceIdx];
+                cube.style.transform = \`rotateX(\${1080 + targetRot.x}deg) rotateY(\${1080 + targetRot.y}deg)\`;
+            });
+            setTimeout(() => {
+                isRolling = false;
+                activeDiceList.forEach((diceId) => {
+                    const cube = document.getElementById(\`cube-\${diceId}\`);
+                    if (cube) cube.classList.add('idle-float');
+                });
+                updateResultCardsUI();
+            }, 1600);
+        }
+
+        function updateResultCardsUI() {
+            const container = document.getElementById('results-grid');
+            container.innerHTML = '';
+            activeDiceList.forEach((diceId) => {
+                const config = PRESET_DICE_POOL[diceId];
+                const state = diceStates[diceId];
+                if (!config || !state) return;
+                const activeFace = config.faces[state.activeFaceIndex];
+                const card = document.createElement('div');
+                card.className = \`p-3 rounded-2xl \${activeFace.bgCard} border flex items-center gap-2.5 shadow-sm hover:scale-105 transition cursor-pointer\`;
+                card.onclick = () => addResultToComicPanel(config.name, activeFace);
+                card.innerHTML = \`
+                    <div class="w-8 h-8 rounded-xl bg-gradient-to-tr \${activeFace.color} text-white flex items-center justify-center text-sm shadow">
+                        <i class="fa-solid \${activeFace.icon}"></i>
+                    </div>
+                    <div>
+                        <div class="text-[9px] font-bold text-slate-400 uppercase">\${config.name}</div>
+                        <div class="font-black text-slate-800 text-xs">\${activeFace.name}</div>
+                    </div>
+                \`;
+                container.appendChild(card);
+            });
+        }
+
+        function selectPanel(index) {
+            selectedPanelIndex = index;
+            for (let i = 0; i < 4; i++) {
+                const p = document.getElementById(\`panel-\${i}\`);
+                if (i === index) p.classList.add('border-amber-500', 'bg-amber-50/80');
+                else p.classList.remove('border-amber-500', 'bg-amber-50/80');
+            }
+        }
+
+        function addResultToComicPanel(categoryName, faceData) {
+            const panel = document.getElementById(\`panel-\${selectedPanelIndex}\`);
+            if (!panel) return;
+            panel.innerHTML = \`
+                <span class="absolute top-2 left-2 w-5 h-5 rounded-full bg-amber-500 text-white font-black text-xs flex items-center justify-center">\${selectedPanelIndex + 1}</span>
+                <div class="flex flex-col items-center justify-center gap-1">
+                    <i class="fa-solid \${faceData.icon} text-xl text-amber-600"></i>
+                    <span class="text-xs font-black text-slate-800">\${faceData.name}</span>
+                </div>
+            \`;
+            if (selectedPanelIndex < 3) selectPanel(selectedPanelIndex + 1);
+        }
+
+        window.onload = function() {
+            initDiceTray();
+            selectPanel(0);
+        };
+    <\/script>
+</body>
+</html>`;
+
+        function openGameModal() {
+            const modal = document.getElementById('game-modal');
+            const iframe = document.getElementById('game-iframe');
+            iframe.srcdoc = GAME_HTML_CODE;
+            modal.classList.remove('hidden');
+        }
+        function closeGameModal() {
+            document.getElementById('game-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
